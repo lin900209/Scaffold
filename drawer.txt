@@ -1,0 +1,44 @@
+Drawer
+Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: Text("Scaffold example"),
+          leading: Icon(FontAwesomeIcons.dragon),
+        ),
+        drawer: Drawer(
+          child: ListView(
+            children: <Widget>[
+              UserAccountsDrawerHeader(
+                accountName: Text('Sandy'),
+                accountEmail: Text('HelloFlutter@gmail.com'),
+                currentAccountPicture: Image.asset('assets/images/flutter.jpg'),
+                decoration: BoxDecoration(color: Colors.blue),
+              ),
+              ListTile(
+                leading: Icon(Icons.favorite),
+                title: Text('喜好項目'),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.headset),
+                title: Text('音樂收藏'),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.star),
+                title: Text('精選項目'),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+            ],
+          ),
+        ),
+        body: Container());
+  }
+}
+

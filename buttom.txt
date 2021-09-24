@@ -1,0 +1,91 @@
+import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+
+        primarySwatch: Colors.yellow,
+      ),
+      home: const MyHomePage(title: 'Hello Flutter'),
+      debugShowCheckedModeBanner: false,
+    );
+  }
+}
+
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({Key? key, required this.title}) : super(key: key);
+
+
+
+  final String title;
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  int _selectedIndex = 0;  //預設index
+  static const TextStyle optionStyle = TextStyle(fontSize: 30, fontWeight: FontWeight.bold); //textstyle
+  static const List<Widget> _widgetOptions = <Widget>[ //用list做 每頁內容
+    Text(
+      '女人',
+      style: optionStyle,
+    ),
+    Text(
+      '男人',
+      style: optionStyle,
+    ),
+    Text(
+      '小孩',
+      style: optionStyle,
+    ),
+  ];
+
+  void _onItemTapped(int index) { //onTap換index
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Scaffold Example'),
+        backgroundColor: Color(0xFF18b6b2),
+      ),
+      body: Center(
+        child: _widgetOptions.elementAt(_selectedIndex), //list拿進來用
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.favorite_border),
+            title: Text('女人'),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.face),
+            title: Text('男人'),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.child_care),
+            title: Text('小孩'),
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.amber[800],
+        onTap: _onItemTapped,
+      ),
+    );
+  }
+}

@@ -1,0 +1,36 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        home: Scaffold(
+          appBar: AppBar(
+            title: Text('Scaffold Example'),
+          ),
+          body: HomePage(),
+        ));
+  }
+}
+
+class HomePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: RaisedButton(
+        child: Text('Hello Flutter'),
+        onPressed: () {
+          //顯示 SnackBar 簡單基本訊息
+          final snackBar = new SnackBar(content: new Text('這是一個按鈕！！！'));
+          Scaffold.of(context).showSnackBar(snackBar);
+        },
+
+      ),
+
+    );
+  }
+}
